@@ -5,10 +5,12 @@ import Sidebar from "./components/Sidebar";
 import Dashboard from "./components/Dashboard";
 import IncidentForm from "./components/IncidentForm";
 import Incidents from "./components/Incidents";
+import ActivityLogs from "./components/ActivityLogs";
 
 function App() {
   const [showForm, setShowForm] = useState(false);
   const [incidents, setIncidents] = useState([]);
+  const [activities, setActivities] = useState([]);
   const [activePage, setActivePage] = useState("dashboard");
 
   return (
@@ -24,13 +26,23 @@ function App() {
     {showForm && (
       <IncidentForm
         onCancel={() => setShowForm(false)}
-        onSubmit={(newIncident) => {
-          setIncidents((previous) => [
-            newIncident,
-            ...previous,
-          ]);
-          setShowForm(false);
-        }}
+       onSubmit={(newIncident) => {
+  setIncidents((previous) => [newIncident, ...previous]);
+
+  setActivities((previous) => [
+    {
+      id: Date.now(),
+      message: "New incident reported",
+      incidentTitle: newIncident.title,
+      incidentId: newIncident.id,
+      status: newIncident.status,
+      time: new Date().toLocaleString(),
+    },
+    ...previous,
+  ]);
+
+  setShowForm(false);
+}}
       />
     )}
 
@@ -42,15 +54,9 @@ function App() {
       <Incidents incidents={incidents} />
     )}
 
-    {activePage === "activity" && (
-      <section className="welcome">
-        <p>SECURITY OPERATIONS</p>
-        <h1>Activity Logs</h1>
-        <span>
-          Activity history will be available here soon.
-        </span>
-      </section>
-    )}
+ {activePage === "activity" && (
+  <ActivityLogs activities={activities} />
+)}
   </main>
 </div>
 

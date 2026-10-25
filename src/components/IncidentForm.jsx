@@ -37,13 +37,13 @@ function IncidentForm({ onCancel, onSubmit }) {
     event.preventDefault();
 
     const newIncident = {
-      id: `INC-${Date.now()}`,
-      title,
-      category,
-      severity,
-      description,
-      status: "Reported",
-    };
+  id: `INC-${Date.now()}`,
+  title,
+  category,
+  severity: determineSeverity(category, description),
+  description,
+  status: "Reported",
+};
 
     onSubmit(newIncident);
   }
