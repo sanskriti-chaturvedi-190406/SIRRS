@@ -1,62 +1,18 @@
+import { useState } from "react";
+
 function ActivityLogs({ activities = [] }) {
-  return (
-    <section className="incidents-page">
-      <header className="topbar">
-        <div>
-          <p className="subtitle">Workspace / Activity Logs</p>
-          <h2>Activity Logs</h2>
-        </div>
-
-        <span className="system-status">
-          ● System Operational
-        </span>
-      </header>
-
-      <section className="welcome">
-        <p>SECURITY OPERATIONS</p>
-        <h1>Activity History</h1>
-        <span>Track actions performed in the incident response system.</span>
-      </section>
-
-      <section className="incidents">
-        <h3>Recent Activities</h3>
-        <p className="subtitle">
-          Total activities: {activities.length}
-        </p>
-
-        {activities.length === 0 ? (
-          <p>No activities recorded yet. Report an incident to get started.</p>
-        ) : (
-          <div className="table-scroll">
-            <table>
-              <thead>
-                <tr>
-                  <th>ACTIVITY</th>
-                  <th>INCIDENT</th>
-                  <th>STATUS</th>
-                  <th>TIME</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                {activities.map((activity) => (
-                  <tr key={activity.id}>
-                    <td>{activity.message}</td>
-                    <td>
-                      {activity.incidentTitle}
-                      <small>{activity.incidentId}</small>
-                    </td>
-                    <td>{activity.status}</td>
-                    <td>{activity.time}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-      </section>
+  const [actionFilter, setActionFilter] = useState("All actions");
+  const actions = [...new Set(activities.map((activity) => activity.message))];
+  const filtered = activities.filter((activity) => actionFilter === "All actions" || activity.message === actionFilter);
+  return <section className="page-content">
+    <header className="topbar"><h2>Audit Log</h2></header>
+    <section className="welcome"><p>ACTIVITY HISTORY</p><h1>Audit log</h1><span>Review changes made to reports and user accounts.</span></section>
+    <section className="filter-panel"><label htmlFor="audit-action-filter">Filter by action</label><select id="audit-action-filter" value={actionFilter} onChange={(event) => setActionFilter(event.target.value)}><option>All actions</option>{actions.map((action) => <option key={action}>{action}</option>)}</select><span>{filtered.length} entries</span></section>
+    <section className="incidents activity-card"><h3>Recent activity</h3><p className="subtitle">{filtered.length} matching entries</p>
+      {filtered.length === 0 ? <p className="empty-state">No activity matches this filter.</p> : <div className="table-scroll"><table><thead><tr><th>ACTION</th><th>INCIDENT / RECORD</th><th>STATUS</th><th>TIME</th><th>BY</th></tr></thead><tbody>
+      {filtered.map((activity) => <tr key={activity.id}><td>{activity.message}</td><td>{activity.incidentTitle}<small>{activity.incidentId}</small></td><td>{activity.status}</td><td>{activity.time}</td><td>{activity.actor}<small>{activity.actorEmail}</small></td></tr>)}
+      </tbody></table></div>}
     </section>
-  );
+  </section>;
 }
-
 export default ActivityLogs;
