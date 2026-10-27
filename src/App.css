@@ -1,4 +1,3 @@
-
 * {
   box-sizing: border-box;
 }
@@ -403,4 +402,401 @@ footer {
 
 .incident-search:focus {
   border-color: #60a5fa;
+}
+
+/* Triage Test */
+
+.triage-test {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 35px 0 50px;
+}
+
+.triage-header {
+  margin-bottom: 28px;
+}
+
+.triage-eyebrow {
+  margin: 0 0 8px;
+  color: #72a5ff;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.triage-header h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+}
+
+.triage-description {
+  margin: 0;
+  color: #8390a7;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.triage-layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.8fr) minmax(520px, 1.2fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.triage-form-card {
+  background: #111c2e;
+  border: 1px solid #253047;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.section-heading {
+  margin-bottom: 24px;
+}
+
+.section-heading h2 {
+  margin: 0 0 7px;
+  font-size: 18px;
+}
+
+.section-heading p {
+  margin: 0;
+  color: #8390a7;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.triage-field {
+  margin-bottom: 18px;
+}
+
+.triage-field > label {
+  display: block;
+  margin-bottom: 8px;
+  color: #cbd5e1;
+  font-size: 13px;
+}
+
+.triage-field input[type="text"],
+.triage-field select,
+.triage-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 13px;
+  border: 1px solid #354158;
+  border-radius: 7px;
+  outline: none;
+  background: #0d1321;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+}
+
+.triage-field input[type="text"]:focus,
+.triage-field select:focus,
+.triage-field textarea:focus {
+  border-color: #60a5fa;
+}
+
+.triage-field textarea {
+  min-height: 125px;
+  resize: vertical;
+}
+
+.triage-radio-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.triage-radio {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 12px;
+  border: 1px solid #354158;
+  border-radius: 7px;
+  background: #0d1321;
+  color: #aebbd0;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.triage-radio input {
+  margin: 0;
+  accent-color: #60a5fa;
+}
+
+.triage-radio:has(input:checked) {
+  border-color: #60a5fa;
+  color: #e8edf7;
+  background: #14233c;
+}
+
+.triage-submit {
+  width: 100%;
+  margin-top: 5px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 7px;
+  background: #315fa3;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.triage-submit:hover:not(:disabled) {
+  background: #3d72bd;
+}
+
+.triage-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.triage-error {
+  margin-top: 18px;
+  padding: 13px;
+  border: 1px solid #713442;
+  border-radius: 7px;
+  background: #2a1820;
+}
+
+.triage-error strong {
+  color: #fb7185;
+  font-size: 12px;
+}
+
+.triage-error p {
+  margin: 6px 0 0;
+  color: #cbd5e1;
+  font-size: 12px;
+}
+
+/* Triage Result */
+
+.triage-result-card {
+  border: 1px solid;
+  border-radius: 14px;
+  padding: 25px;
+  background: #111c2e;
+}
+
+.triage-result-card.low {
+  border-color: #4ade80;
+}
+
+.triage-result-card.medium {
+  border-color: #facc15;
+}
+
+.triage-result-card.high {
+  border-color: #fb923c;
+}
+
+.triage-result-card.critical {
+  border-color: #fb7185;
+}
+
+.priority-text.low {
+  color: #4ade80;
+}
+
+.priority-text.medium {
+  color: #facc15;
+}
+
+.priority-text.high {
+  color: #fb923c;
+}
+
+.priority-text.critical {
+  color: #fb7185;
+}
+
+.triage-result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #253047;
+}
+
+.result-label {
+  margin: 0 0 7px;
+  color: #8390a7;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+}
+
+.triage-result-header h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.triage-score {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+}
+
+.triage-score strong {
+  font-size: 38px;
+  line-height: 1;
+}
+
+.triage-score span {
+  color: #8390a7;
+  font-size: 13px;
+}
+
+.factor-section {
+  padding: 22px 0;
+  border-bottom: 1px solid #253047;
+}
+
+.factor-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.factor-item {
+  min-width: 0;
+}
+
+.factor-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 5px;
+  margin-bottom: 9px;
+}
+
+.factor-top span {
+  color: #aebbd0;
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+.factor-top strong {
+  color: #e8edf7;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.factor-bar {
+  height: 7px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #253047;
+}
+
+.factor-fill {
+  height: 100%;
+  border-radius: inherit;
+}
+
+.factor-low {
+  background: #4ade80;
+}
+
+.factor-medium {
+  background: #facc15;
+}
+
+.factor-moderate {
+  background: #fbbf24;
+}
+
+.factor-high {
+  background: #fb923c;
+}
+
+.factor-critical {
+  background: #fb7185;
+}
+
+.reasoning-section {
+  padding-top: 22px;
+}
+
+.reasoning-section h3 {
+  margin: 0 0 17px;
+  font-size: 15px;
+}
+
+.reasoning-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 20px;
+}
+
+.reasoning-list > div {
+  min-width: 0;
+  padding-left: 12px;
+  border-left: 2px solid #253047;
+}
+
+.reasoning-list > div:last-child {
+  grid-column: 1 / -1;
+}
+
+.reasoning-list strong {
+  color: #cbd5e1;
+  font-size: 11px;
+}
+
+.reasoning-list p {
+  margin: 5px 0 0;
+  color: #8f9db2;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* Triage responsive layout */
+
+@media (max-width: 950px) {
+  .triage-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .factor-grid {
+    grid-template-columns: repeat(5, minmax(90px, 1fr));
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 650px) {
+  .triage-test {
+    padding: 25px 0 40px;
+  }
+
+  .triage-header h1 {
+    font-size: 23px;
+  }
+
+  .triage-form-card,
+  .triage-result-card {
+    padding: 18px;
+  }
+
+  .triage-result-header {
+    align-items: flex-start;
+  }
+
+  .triage-score strong {
+    font-size: 30px;
+  }
+
+  .factor-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .factor-top {
+    margin-bottom: 6px;
+  }
 }

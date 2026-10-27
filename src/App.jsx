@@ -6,11 +6,13 @@ import Dashboard from "./components/Dashboard";
 import IncidentForm from "./components/IncidentForm";
 import Incidents from "./components/Incidents";
 import ActivityLogs from "./components/ActivityLogs";
+import TriageTest from "./components/TriageTest";
 
 function App() {
   const [incidents, setIncidents] = useState([]);
   const [activities, setActivities] = useState([]);
   const [activePage, setActivePage] = useState("dashboard");
+  
 
   // Handle new incident submission
   const handleIncidentSubmit = (newIncident) => {
@@ -64,6 +66,11 @@ function App() {
             onCancel={() => setActivePage("dashboard")}
             onSubmit={handleIncidentSubmit}
           />
+        )}
+
+        {/*testing triage rn*/}
+        {activePage === "triage-test" && (
+          <TriageTest/>
         )}
       </main>
     </div>
