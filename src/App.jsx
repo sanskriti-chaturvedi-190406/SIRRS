@@ -14,58 +14,72 @@ import UserManagement from "./components/UserManagement";
 
 const DB_KEY = "sirrs.frontend.v1";
 const demoUsers = [
-  { id: "admin-1", name: "Morgan Admin", email: "admin@sirrs.demo", role: "Admin", password: "SIRRSAdmin!2026" },
-  { id: "reporter-1", name: "Riley Reporter", email: "riley@sirrs.demo", role: "Reporter", password: "Reporter!2026" },
-  { id: "analyst-1", name: "Alex Analyst", email: "alex@sirrs.demo", role: "Analyst", password: "Analyst!2026" },
-  { id: "reporter-2", name: "Jordan Lee", email: "jordan.reporter@sirrs.demo", role: "Reporter", password: "JordanReport!2026" },
-  { id: "reporter-3", name: "Taylor Morgan", email: "taylor.reporter@sirrs.demo", role: "Reporter", password: "TaylorReport!2026" },
-  { id: "analyst-2", name: "Casey Patel", email: "casey.analyst@sirrs.demo", role: "Analyst", password: "CaseyAnalyze!2026" },
-  { id: "analyst-3", name: "Avery Chen", email: "avery.analyst@sirrs.demo", role: "Analyst", password: "AveryAnalyze!2026" },
-  { id: "reporter-4", name: "Jamie Rivera", email: "jamie.rivera@sirrs.demo", role: "Reporter", password: "JamieReport!2026" },
-  { id: "reporter-5", name: "Noah Williams", email: "noah.williams@sirrs.demo", role: "Reporter", password: "NoahReport!2026" },
+  { id: "admin-1", name: "Ananya Sharma", email: "admin@sirrs.demo", role: "Admin", password: "SIRRSAdmin!2026" },
+  { id: "reporter-1", name: "Aarav Mehta", email: "riley@sirrs.demo", role: "Reporter", password: "Reporter!2026" },
+  { id: "analyst-1", name: "Riya Verma", email: "alex@sirrs.demo", role: "Analyst", password: "Analyst!2026" },
+  { id: "reporter-2", name: "Kabir Singh", email: "jordan.reporter@sirrs.demo", role: "Reporter", password: "JordanReport!2026" },
+  { id: "reporter-3", name: "Nisha Gupta", email: "taylor.reporter@sirrs.demo", role: "Reporter", password: "TaylorReport!2026" },
+  { id: "analyst-2", name: "Arjun Patel", email: "casey.analyst@sirrs.demo", role: "Analyst", password: "CaseyAnalyze!2026" },
+  { id: "analyst-3", name: "Isha Desai", email: "avery.analyst@sirrs.demo", role: "Analyst", password: "AveryAnalyze!2026" },
+  { id: "reporter-4", name: "Meera Iyer", email: "jamie.rivera@sirrs.demo", role: "Reporter", password: "JamieReport!2026" },
+  { id: "reporter-5", name: "Vivaan Rao", email: "noah.williams@sirrs.demo", role: "Reporter", password: "NoahReport!2026" },
   { id: "reporter-6", name: "Priya Shah", email: "priya.shah@sirrs.demo", role: "Reporter", password: "PriyaReport!2026" },
-  { id: "analyst-4", name: "Sam Okafor", email: "sam.okafor@sirrs.demo", role: "Analyst", password: "SamAnalyze!2026" },
-  { id: "analyst-5", name: "Mina Park", email: "mina.park@sirrs.demo", role: "Analyst", password: "MinaAnalyze!2026" },
-  { id: "analyst-6", name: "Leo Fischer", email: "leo.fischer@sirrs.demo", role: "Analyst", password: "LeoAnalyze!2026" },
+  { id: "analyst-4", name: "Dev Malhotra", email: "sam.okafor@sirrs.demo", role: "Analyst", password: "SamAnalyze!2026" },
+  { id: "analyst-5", name: "Aditi Nair", email: "mina.park@sirrs.demo", role: "Analyst", password: "MinaAnalyze!2026" },
+  { id: "analyst-6", name: "Ishaan Joshi", email: "leo.fischer@sirrs.demo", role: "Analyst", password: "LeoAnalyze!2026" },
 ];
+const previousDemoNames = {
+  "Morgan Admin": "Ananya Sharma",
+  "Riley Reporter": "Aarav Mehta",
+  "Alex Analyst": "Riya Verma",
+  "Jordan Lee": "Kabir Singh",
+  "Taylor Morgan": "Nisha Gupta",
+  "Casey Patel": "Arjun Patel",
+  "Avery Chen": "Isha Desai",
+  "Jamie Rivera": "Meera Iyer",
+  "Noah Williams": "Vivaan Rao",
+  "Sam Okafor": "Dev Malhotra",
+  "Mina Park": "Aditi Nair",
+  "Leo Fischer": "Ishaan Joshi",
+};
 const demoIncidents = [
-  { id: "INC-1001", title: "Suspicious login from a new location", category: "Unauthorized Access", severity: "High", status: "In Progress", reporter: "Riley Reporter", reporterId: "reporter-1", reporterRole: "Reporter", assignedTo: "analyst-1", publicUpdate: "Investigation started. We are reviewing the sign-in history.", internalNotes: [{ id: "note-1", author: "Alex Analyst", body: "Compare source IP against recent VPN exit nodes.", time: "2026-10-25 10:20" }] },
-  { id: "INC-1002", title: "Phishing email reported by finance", category: "Phishing", severity: "Medium", status: "Assigned", reporter: "Riley Reporter", reporterId: "reporter-1", reporterRole: "Reporter", assignedTo: "analyst-1", publicUpdate: "Your report is queued for review.", internalNotes: [] },
-  { id: "INC-1003", title: "Unexpected outbound network traffic", category: "Network Security", severity: "Critical", status: "Submitted", reporter: "Riley Reporter", reporterId: "reporter-1", reporterRole: "Reporter", assignedTo: "", publicUpdate: "", internalNotes: [] },
-  { id: "INC-1004", title: "Malware detected on workstation", category: "Malware", severity: "High", status: "Resolved", reporter: "Riley Reporter", reporterId: "reporter-1", reporterRole: "Reporter", assignedTo: "analyst-1", publicUpdate: "The affected device was isolated and cleaned.", internalNotes: [] },
-  { id: "INC-1005", title: "Unusual access to shared files", category: "Unauthorized Access", severity: "Medium", status: "In Progress", reporter: "Jordan Lee", reporterId: "reporter-2", reporterRole: "Reporter", assignedTo: "analyst-2", publicUpdate: "The access history is being reviewed.", internalNotes: [] },
-  { id: "INC-1006", title: "Suspicious attachment in vendor email", category: "Phishing", severity: "High", status: "Assigned", reporter: "Taylor Morgan", reporterId: "reporter-3", reporterRole: "Reporter", assignedTo: "analyst-3", publicUpdate: "The attachment has been isolated for analysis.", internalNotes: [] },
-  { id: "INC-1007", title: "Unexpected sign-in prompt", category: "Account Security", severity: "Low", status: "Submitted", reporter: "Jordan Lee", reporterId: "reporter-2", reporterRole: "Reporter", assignedTo: "", publicUpdate: "", internalNotes: [] },
-  { id: "INC-1008", title: "Possible data exposure in shared folder", category: "Data Exposure", severity: "Medium", status: "Submitted", reporter: "Taylor Morgan", reporterId: "reporter-3", reporterRole: "Reporter", assignedTo: "", publicUpdate: "", internalNotes: [] },
-  { id: "INC-1009", title: "Repeated MFA prompts reported by staff", category: "Account Security", severity: "Medium", status: "In Progress", reporter: "Jamie Rivera", reporterId: "reporter-4", reporterRole: "Reporter", assignedTo: "analyst-4", publicUpdate: "We are checking the authentication logs for unusual activity.", internalNotes: [] },
-  { id: "INC-1010", title: "Unrecognized device on corporate Wi-Fi", category: "Network Security", severity: "Low", status: "Assigned", reporter: "Noah Williams", reporterId: "reporter-5", reporterRole: "Reporter", assignedTo: "analyst-5", publicUpdate: "The device is being identified by the network team.", internalNotes: [] },
+  { id: "INC-1001", title: "Suspicious login from a new location", category: "Unauthorized Access", severity: "High", status: "In Progress", reporter: "Aarav Mehta", reporterId: "reporter-1", reporterRole: "Reporter", assignedTo: "analyst-1", publicUpdate: "Investigation started. We are reviewing the sign-in history.", internalNotes: [{ id: "note-1", author: "Riya Verma", body: "Compare source IP against recent VPN exit nodes.", time: "2026-10-25 10:20" }] },
+  { id: "INC-1002", title: "Phishing email reported by finance", category: "Phishing", severity: "Medium", status: "Assigned", reporter: "Aarav Mehta", reporterId: "reporter-1", reporterRole: "Reporter", assignedTo: "analyst-1", publicUpdate: "Your report is queued for review.", internalNotes: [] },
+  { id: "INC-1003", title: "Unexpected outbound network traffic", category: "Network Security", severity: "Critical", status: "Submitted", reporter: "Aarav Mehta", reporterId: "reporter-1", reporterRole: "Reporter", assignedTo: "", publicUpdate: "", internalNotes: [] },
+  { id: "INC-1004", title: "Malware detected on workstation", category: "Malware", severity: "High", status: "Resolved", reporter: "Aarav Mehta", reporterId: "reporter-1", reporterRole: "Reporter", assignedTo: "analyst-1", publicUpdate: "The affected device was isolated and cleaned.", internalNotes: [] },
+  { id: "INC-1005", title: "Unusual access to shared files", category: "Unauthorized Access", severity: "Medium", status: "In Progress", reporter: "Kabir Singh", reporterId: "reporter-2", reporterRole: "Reporter", assignedTo: "analyst-2", publicUpdate: "The access history is being reviewed.", internalNotes: [] },
+  { id: "INC-1006", title: "Suspicious attachment in vendor email", category: "Phishing", severity: "High", status: "Assigned", reporter: "Nisha Gupta", reporterId: "reporter-3", reporterRole: "Reporter", assignedTo: "analyst-3", publicUpdate: "The attachment has been isolated for analysis.", internalNotes: [] },
+  { id: "INC-1007", title: "Unexpected sign-in prompt", category: "Account Security", severity: "Low", status: "Submitted", reporter: "Kabir Singh", reporterId: "reporter-2", reporterRole: "Reporter", assignedTo: "", publicUpdate: "", internalNotes: [] },
+  { id: "INC-1008", title: "Possible data exposure in shared folder", category: "Data Exposure", severity: "Medium", status: "Submitted", reporter: "Nisha Gupta", reporterId: "reporter-3", reporterRole: "Reporter", assignedTo: "", publicUpdate: "", internalNotes: [] },
+  { id: "INC-1009", title: "Repeated MFA prompts reported by staff", category: "Account Security", severity: "Medium", status: "In Progress", reporter: "Meera Iyer", reporterId: "reporter-4", reporterRole: "Reporter", assignedTo: "analyst-4", publicUpdate: "We are checking the authentication logs for unusual activity.", internalNotes: [] },
+  { id: "INC-1010", title: "Unrecognized device on corporate Wi-Fi", category: "Network Security", severity: "Low", status: "Assigned", reporter: "Vivaan Rao", reporterId: "reporter-5", reporterRole: "Reporter", assignedTo: "analyst-5", publicUpdate: "The device is being identified by the network team.", internalNotes: [] },
   { id: "INC-1011", title: "Sensitive document shared externally", category: "Data Exposure", severity: "High", status: "Submitted", reporter: "Priya Shah", reporterId: "reporter-6", reporterRole: "Reporter", assignedTo: "", publicUpdate: "", internalNotes: [] },
-  { id: "INC-1012", title: "Endpoint protection alert on design laptop", category: "Malware", severity: "Critical", status: "In Progress", reporter: "Jamie Rivera", reporterId: "reporter-4", reporterRole: "Reporter", assignedTo: "analyst-6", publicUpdate: "The endpoint has been isolated while the alert is reviewed.", internalNotes: [] },
-  { id: "INC-1013", title: "Suspicious password reset email", category: "Phishing", severity: "Medium", status: "Assigned", reporter: "Noah Williams", reporterId: "reporter-5", reporterRole: "Reporter", assignedTo: "analyst-4", publicUpdate: "The sender details are under review.", internalNotes: [] },
+  { id: "INC-1012", title: "Endpoint protection alert on design laptop", category: "Malware", severity: "Critical", status: "In Progress", reporter: "Meera Iyer", reporterId: "reporter-4", reporterRole: "Reporter", assignedTo: "analyst-6", publicUpdate: "The endpoint has been isolated while the alert is reviewed.", internalNotes: [] },
+  { id: "INC-1013", title: "Suspicious password reset email", category: "Phishing", severity: "Medium", status: "Assigned", reporter: "Vivaan Rao", reporterId: "reporter-5", reporterRole: "Reporter", assignedTo: "analyst-4", publicUpdate: "The sender details are under review.", internalNotes: [] },
   { id: "INC-1014", title: "Unusual access to finance application", category: "Unauthorized Access", severity: "High", status: "Resolved", reporter: "Priya Shah", reporterId: "reporter-6", reporterRole: "Reporter", assignedTo: "analyst-5", publicUpdate: "Access was revoked and the account owner confirmed the activity was not theirs.", internalNotes: [] },
-  { id: "INC-1015", title: "Possible data transfer to removable media", category: "Data Exposure", severity: "Medium", status: "Submitted", reporter: "Jamie Rivera", reporterId: "reporter-4", reporterRole: "Reporter", assignedTo: "", publicUpdate: "", internalNotes: [] },
-  { id: "INC-1016", title: "Unexpected DNS requests from lab workstation", category: "Network Security", severity: "Low", status: "Assigned", reporter: "Noah Williams", reporterId: "reporter-5", reporterRole: "Reporter", assignedTo: "analyst-6", publicUpdate: "The workstation activity is being compared with normal lab traffic.", internalNotes: [] },
+  { id: "INC-1015", title: "Possible data transfer to removable media", category: "Data Exposure", severity: "Medium", status: "Submitted", reporter: "Meera Iyer", reporterId: "reporter-4", reporterRole: "Reporter", assignedTo: "", publicUpdate: "", internalNotes: [] },
+  { id: "INC-1016", title: "Unexpected DNS requests from lab workstation", category: "Network Security", severity: "Low", status: "Assigned", reporter: "Vivaan Rao", reporterId: "reporter-5", reporterRole: "Reporter", assignedTo: "analyst-6", publicUpdate: "The workstation activity is being compared with normal lab traffic.", internalNotes: [] },
 ];
 const makeDemoActivities = () => {
   const ago = (hours) => new Date(Date.now() - hours * 60 * 60 * 1000).toLocaleString();
   const events = [
     { incident: demoIncidents[0], message: "Investigation update added", hours: 1.5, actor: demoUsers[2] },
-    { incident: demoIncidents[1], message: "Incident assigned to Alex Analyst", hours: 2.4, actor: demoUsers[0] },
+    { incident: demoIncidents[1], message: "Incident assigned to Riya Verma", hours: 2.4, actor: demoUsers[0] },
     { incident: demoIncidents[0], message: "Severity reviewed: High", hours: 3.2, actor: demoUsers[0] },
     { incident: demoIncidents[2], message: "Incident submitted", hours: 4.1, actor: demoUsers[1] },
     { incident: demoIncidents[3], message: "Incident resolved", hours: 5.3, actor: demoUsers[2] },
-    { incident: demoIncidents[4], message: "Incident assigned to Casey Patel", hours: 6.2, actor: demoUsers[0] },
-    { incident: demoIncidents[5], message: "Incident assigned to Avery Chen", hours: 7.1, actor: demoUsers[0] },
+    { incident: demoIncidents[4], message: "Incident assigned to Arjun Patel", hours: 6.2, actor: demoUsers[0] },
+    { incident: demoIncidents[5], message: "Incident assigned to Isha Desai", hours: 7.1, actor: demoUsers[0] },
     { incident: demoIncidents[6], message: "Incident submitted", hours: 8.4, actor: demoUsers[3] },
     { incident: demoIncidents[7], message: "Incident submitted", hours: 9.3, actor: demoUsers[4] },
     { incident: demoIncidents[8], message: "Investigation update added", hours: 10.2, actor: demoUsers[10] },
-    { incident: demoIncidents[9], message: "Incident assigned to Mina Park", hours: 11.4, actor: demoUsers[0] },
+    { incident: demoIncidents[9], message: "Incident assigned to Aditi Nair", hours: 11.4, actor: demoUsers[0] },
     { incident: demoIncidents[10], message: "Incident submitted", hours: 12.1, actor: demoUsers[9] },
-    { incident: demoIncidents[11], message: "Incident assigned to Leo Fischer", hours: 13.5, actor: demoUsers[0] },
+    { incident: demoIncidents[11], message: "Incident assigned to Ishaan Joshi", hours: 13.5, actor: demoUsers[0] },
     { incident: demoIncidents[12], message: "Incident submitted", hours: 15.2, actor: demoUsers[8] },
     { incident: demoIncidents[13], message: "Incident resolved", hours: 17.3, actor: demoUsers[11] },
     { incident: demoIncidents[14], message: "Incident submitted", hours: 19.1, actor: demoUsers[7] },
-    { incident: demoIncidents[15], message: "Incident assigned to Leo Fischer", hours: 22.6, actor: demoUsers[0] },
+    { incident: demoIncidents[15], message: "Incident assigned to Ishaan Joshi", hours: 22.6, actor: demoUsers[0] },
   ];
   return events.map(({ incident, message, hours, actor }, index) => ({
     id: `demo-activity-${index + 1}`, message, incidentTitle: incident.title, incidentId: incident.id,
@@ -100,14 +114,26 @@ function App() {
     (async () => {
       const saved = readSavedData();
       if (saved?.users?.length) {
-        const savedIncidents = saved.incidents || [];
-        const history = saved.activities?.length ? saved.activities : savedIncidents.some((incident) => incident.id === "INC-1001") ? makeDemoActivities() : [];
+        const userNamesByEmail = new Map(demoUsers.map(({ email, name }) => [email, name]));
+        const userNamesById = new Map(demoUsers.map(({ id, name }) => [id, name]));
+        const savedUsers = saved.users.map((user) => userNamesByEmail.has(user.email) ? { ...user, name: userNamesByEmail.get(user.email) } : user);
+        const savedIncidents = (saved.incidents || []).map((incident) => ({
+          ...incident,
+          reporter: userNamesById.get(incident.reporterId) || previousDemoNames[incident.reporter] || incident.reporter,
+          internalNotes: (incident.internalNotes || []).map((note) => ({ ...note, author: previousDemoNames[note.author] || note.author })),
+        }));
+        const savedHistory = saved.activities?.length ? saved.activities : savedIncidents.some((incident) => incident.id === "INC-1001") ? makeDemoActivities() : [];
+        const history = savedHistory.map((activity) => ({
+          ...activity,
+          actor: userNamesByEmail.get(activity.actorEmail) || previousDemoNames[activity.actor] || activity.actor,
+          message: Object.entries(previousDemoNames).reduce((message, [oldName, newName]) => message.replaceAll(oldName, newName), activity.message || ""),
+        }));
         const missingUsers = demoUsers.filter((demoUser) => !saved.users.some((user) => user.id === demoUser.id || user.email === demoUser.email));
         const newDemoUsers = await Promise.all(missingUsers.map(async ({ password, ...user }) => ({ ...user, ...await hashPassword(password) })));
         const additionalIncidents = demoIncidents.filter((demoIncident) => !savedIncidents.some((incident) => incident.id === demoIncident.id));
         const sampleActivities = makeDemoActivities();
         const additionalActivities = sampleActivities.filter((activity) => !history.some((savedActivity) => savedActivity.id === activity.id));
-        if (mounted) { setUsers([...saved.users, ...newDemoUsers]); setIncidents([...savedIncidents, ...additionalIncidents]); setActivities([...history, ...additionalActivities]); setReady(true); }
+        if (mounted) { setUsers([...savedUsers, ...newDemoUsers]); setIncidents([...savedIncidents, ...additionalIncidents]); setActivities([...history, ...additionalActivities]); setReady(true); }
       } else {
         const seededUsers = await Promise.all(demoUsers.map(async ({ password, ...user }) => ({ ...user, ...await hashPassword(password) })));
         if (mounted) { setUsers(seededUsers); setIncidents(demoIncidents); setActivities(makeDemoActivities()); setReady(true); }

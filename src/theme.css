@@ -349,3 +349,24 @@ thead, .incident-filters { background: #f5f9fc; }
   .dashboard-welcome h1 { font-size: 24px; }
   .dashboard-welcome span { max-width: 72%; }
 }
+
+/* Sky-blue navigation palette based on the supplied security reference. */
+.sidebar, .sidebar-collapsed {
+  color: #173a55;
+  background: linear-gradient(180deg, #dff6ff 0%, #b8e9fb 56%, #9cdef5 100%);
+  border-right-color: #93d0e9;
+}
+.sidebar h2, .sidebar .profile { color: #173a55; }
+.sidebar .collapse-button { color: #356984; }
+.sidebar .collapse-button:hover { color: #123b57; background: rgba(255, 255, 255, .48); }
+.sidebar .nav { color: #355d76; }
+.sidebar .nav-icon { color: #397b9a; }
+.sidebar .nav:hover, .sidebar .nav.active, .sidebar .profile-link.active {
+  color: #153c56;
+  background: rgba(255, 255, 255, .62);
+}
+.sidebar .nav.active .nav-icon, .sidebar .nav:hover .nav-icon { color: #087fae; }
+.sidebar .profile { border-top-color: #8fcde5; }
+.sidebar .profile-copy span { color: #4f7187; }
+.sidebar .avatar { color: #087fae; background: #effbff; }
+.brand-shield { color: #087fae; background: rgba(255, 255, 255, .72); }
